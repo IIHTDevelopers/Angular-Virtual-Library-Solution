@@ -1,0 +1,47 @@
+<h1>Virtual Library</h1>
+
+<div>
+    <h3>Add Book</h3>
+    <form (submit)="addBook()">
+        <input type="text" name="title" placeholder="Title" [(ngModel)]="newBook.title">
+        <input type="text" name="author" placeholder="Author" [(ngModel)]="newBook.author">
+        <input type="text" name="genre" placeholder="Genre" [(ngModel)]="newBook.genre">
+        <input type="number" name="publicationYear" placeholder="Publication Year"
+            [(ngModel)]="newBook.publicationYear">
+        <button type="submit">Add Book</button>
+    </form>
+</div>
+
+<div>
+    <h3>Search Books</h3>
+    <input type="text" placeholder="Search Books" [(ngModel)]="searchKeyword">
+</div>
+
+<div>
+    <h3>List of Books</h3>
+    <ul>
+        <li *ngFor="let book of filteredBooks">
+            <div>
+                <h4>{{ book.title }}</h4>
+                <p>Author: {{ book.author }}</p>
+                <p>Genre: {{ book.genre }}</p>
+                <p>Publication Year: {{ book.publicationYear }}</p>
+                <button (click)="editBook(book)">Edit</button>
+                <button (click)="deleteBook(book)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="isEditing">
+    <h3>Edit Book</h3>
+    <form (submit)="saveEditedBook()">
+        <input type="text" name="title" placeholder="Title" [(ngModel)]="editedBook.title">
+        <input type="text" name="author" placeholder="Author" [(ngModel)]="editedBook.author">
+        <input type="text" name="genre" placeholder="Genre" [(ngModel)]="editedBook.genre">
+        <input type="number" name="publicationYear" placeholder="Publication Year"
+            [(ngModel)]="editedBook.publicationYear">
+        <button type="submit">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+</div>
