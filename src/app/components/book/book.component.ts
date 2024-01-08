@@ -20,8 +20,6 @@ export class BookComponent {
   isEditing = false;
   searchKeyword = '';
 
-  constructor() { }
-
   addBook(): void {
     this.newBook.id = this.books.length + 1;
     this.books.push({ ...this.newBook });
